@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="AdMob"
+		creationComplete="view_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import flash.events.MouseEvent;
+			import flash.events.StatusEvent;
+			import milkmidi.extensions.android.AdMobAlignment;
+			import milkmidi.extensions.android.AdMobExtension;
+			import milkmidi.extensions.android.AdSize;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var adMobEnabled:Boolean = true;
+			
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				AdMobExtension.init( "a14dddd94089948" );
+				AdMobExtension.eventDispatcher.addEventListener(StatusEvent.STATUS , statusHandler);			
+				AdMobExtension.show(  AdSize.BANNER , AdMobAlignment.ALIGN_PARENT_RIGHT  );		
+			}
+			
+			private function statusHandler(e:StatusEvent):void {
+				trace( e );
+			}
+			
+			private function show_clickHandler(e:MouseEvent):void {
+				if (e.currentTarget.label == "show left") {
+					AdMobExtension.show(  AdSize.BANNER , AdMobAlignment.ALIGN_LEFT  );		
+				}else {
+					AdMobExtension.show(  AdSize.BANNER , AdMobAlignment.ALIGN_PARENT_RIGHT  );		
+				}
+				
+				adMobEnabled = true;
+			}
+			private function hide_clickHandler(e:MouseEvent):void {
+				AdMobExtension.destroy();
+				adMobEnabled = false;
+			}
+
+		
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:VGroup verticalCenter="0" horizontalCenter="0" gap="20">
+		<s:Button label="show left" click="show_clickHandler(event)" 
+				  enabled="{!adMobEnabled}" width="150" />
+		<s:Button label="show right" click="show_clickHandler(event)" 
+				  enabled="{!adMobEnabled}" width="150" />
+		<s:Button label="hide" click="hide_clickHandler(event)" 
+				  enabled="{adMobEnabled}" width="150" />
+	</s:VGroup>
+	
+</s:View>

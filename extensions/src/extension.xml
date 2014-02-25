@@ -1,0 +1,14 @@
+<extension xmlns="http://ns.adobe.com/air/extension/2.5">
+	<id>milkmidi.extensions.android.Admob</id>
+	<versionNumber>1</versionNumber>
+	<platforms>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>milkmidi.extensions.android.AdMob.jar</nativeLibrary>
+				<initializer>milkmidi.extensions.android.AdMobExtension</initializer>
+				<finalizer>milkmidi.extensions.android.AdMobExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+	</platforms>
+</extension>
+		

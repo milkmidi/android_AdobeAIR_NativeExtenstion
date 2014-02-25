@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<application xmlns="http://ns.adobe.com/air/application/3.1">
+	
+	
+	<extensions>		
+		<extensionID>milkmidi.extensions.android.Admob</extensionID>
+	</extensions>
+	
+	<id>milkmidi.extensions.android.Admob.demo</id>
+	<versionNumber>3</versionNumber>
+	<supportedProfiles>mobileDevice</supportedProfiles>
+	<filename>AdMobExtension</filename>
+	
+	<name>AdMobExtension</name>
+	<description></description>
+	<copyright>milkmidi</copyright>
+	
+	<android>
+		<manifestAdditions><![CDATA[
+			
+			<manifest android:installLocation="auto">
+				
+				
+				<application>
+					<activity android:name="com.google.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation" />
+				</application>				
+				
+				
+				<uses-permission android:name="android.permission.INTERNET"/>		
+				<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+				<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />				
+				<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+				
+			</manifest>
+			
+		]]></manifestAdditions>
+	</android>
+	
+	<initialWindow>
+		<title>AdMobExtension</title>
+		<content>AdMobExtension.swf</content>
+		<visible>true</visible>
+		<autoOrients>true</autoOrients>
+		<!--<aspectRatio>landscape</aspectRatio>-->
+		<!--<fullScreen>true</fullScreen>-->
+		<renderMode>gpu</renderMode>
+	</initialWindow>
+	
+	<icon>
+		<image36x36>icons/36.png</image36x36>
+		<image48x48>icons/48.png</image48x48>
+		<image72x72>icons/72.png</image72x72>
+	</icon>
+	
+	<!-- 
+	AIR options:
+	http://livedocs.adobe.com/flex/3/html/File_formats_1.html#1043413
+	
+	AIR mobile options:
+	http://help.adobe.com/en_US/air/build/WSfffb011ac560372f-5d0f4f25128cc9cd0cb-7ffe.html
+	
+	Android manifest documentation:
+	http://developer.android.com/guide/topics/manifest/manifest-intro.html
+	-->
+</application>
